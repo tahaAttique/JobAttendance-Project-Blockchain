@@ -1,0 +1,37 @@
+#H2Login {
+     text-align : center;
+     font-family: fantasy;
+}
+
+
+#textcolorAttendence{
+    color: #26A69A;
+}
+
+#blackcolourText{
+    color: black;
+}
+
+#textcolorLabel{
+    color: rgb(255, 0, 64);
+}
+
+#btnLogin{
+    margin: 0;
+    position: absolute;
+    top: 50%;
+    -ms-transform: translateY(-50%);
+    transform: translateY(-50%);
+}
+
+.findbtn{
+    background-color: black;
+    font-family: fantasy;
+  }
+
+#card1{
+    padding: 20%;
+    background-color: rgb(180, 238, 228);
+}
+
+  
