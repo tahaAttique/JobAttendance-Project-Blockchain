@@ -32,13 +32,6 @@ class RegisterForm extends Component{
                  web3: web3
         })
 
-        this.state.attendanceContract.methods.getRegisteredAddresses().call().then(function(result){
-            console.log(result);
-        });
-    
-       this.state.attendanceContract.methods.getRegisteredUserName().call().then(function(result){
-           console.log(result);
-       });
     }
 
 

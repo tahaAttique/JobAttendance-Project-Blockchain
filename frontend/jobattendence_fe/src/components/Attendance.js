@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 import './LoginFormCSS.css';
 import {BrowserRouter , Route, withRouter} from 'react-router-dom';
+import {Attendance_Contract_ADDRESS, Attendance_Contract_ABI} from '../config';
+import Web3 from 'web3';
 
 class Attendance extends Component{
 
@@ -8,27 +10,75 @@ class Attendance extends Component{
     constructor(props)
     {
       super(props);
-      this.state={loginedAddress: this.props.loginedAddress, labelEntering:'', labelExiting:''};  
+      this.state={account:'',loginedAddress: this.props.loginedAddress, labelEntering:'', labelExiting:'',attendanceContract:'',web3:''};  
     
+    }
+
+    componentDidMount() {
+        this.loadBlockchainData()
+    }
+    
+    async loadBlockchainData() {
+        const web3 = new Web3(Web3.givenProvider || "http://localhost:7545")
+        
+        const  accounts = await web3.eth.getAccounts()
+        const attendanceContract = new web3.eth.Contract(Attendance_Contract_ABI,Attendance_Contract_ADDRESS);
+
+        this.setState({
+                account: accounts[0], 
+                attendanceContract: attendanceContract,
+                 web3: web3
+        })
+
     }
 
 
     markEnteranceAttendance=()=>{
         if(this.state.loginedAddress !== '')
         {
-            this.setState({
-                labelEntering:"THANK YOU FOR COMING"
-            })
+             var today = new Date();
+             var getFullYear = today.getFullYear().toString(); 
+             var getMonth = (today.getMonth()+1).toString();
+             var getDate = today.getDate().toString();
+             var getHours = today.getHours().toString(); 
+             var getMinutes = today.getMinutes().toString();
+
+
+            this.state.attendanceContract.methods.
+            markEnteranceAttendance({day:getDate  , month:getMonth , year:getFullYear },{hour:getHours , minute: getMinutes},this.state.loginedAddress).
+            send({from: '0xBfeD1Ca7e5494c8C0421CDE6f4B6E4A54e742DC2', gas:3000000});
+
+            
+            
+            setTimeout(()=>{
+                this.props.history.push('/');
+            },2000);
+          
         }
         
     }
 
     markExitAttendance=()=>{
+
         if(this.state.loginedAddress !== '')
         {
-            this.setState({
-                labelExiting:"GOOD BYE"
-            })
+             var today = new Date();
+             var getFullYear = today.getFullYear().toString(); 
+             var getMonth = (today.getMonth()+1).toString();
+             var getDate = today.getDate().toString();
+             var getHours = today.getHours().toString(); 
+             var getMinutes = today.getMinutes().toString();
+
+
+            this.state.attendanceContract.methods.
+            markExitAttendance({day:getDate  , month:getMonth , year:getFullYear },{hour:getHours , minute: getMinutes},this.state.loginedAddress).
+            send({from: '0xBfeD1Ca7e5494c8C0421CDE6f4B6E4A54e742DC2', gas:3000000});
+
+
+            setTimeout(()=>{
+                this.props.history.push('/');
+            },2000);
+            
         }
         
     }

@@ -3,8 +3,9 @@ import Web3 from 'web3';
 import {Attendance_Contract_ADDRESS, Attendance_Contract_ABI} from './config.js';
 import LoginForm from './components/LoginForm';
 import {BrowserRouter , Route} from 'react-router-dom';
-import Attendance from './components/Attendance'
-import RegisterForm from './components/RegisterForm'
+import Attendance from './components/Attendance';
+import RegisterForm from './components/RegisterForm';
+import ViewAttendance from './components/ViewAttendance';
 class App extends Component{
 
   constructor(props)
@@ -77,7 +78,7 @@ class App extends Component{
                           <Route exact path='/' component={(props)=> <LoginForm changeLoginedAddress={this.changeLoginedAddress} />} />
                           <Route path='/Attendance'  render={(props)=> <Attendance loginedAddress={this.state.loginedAddress} /> } /> 
                           <Route path='/RegisterForm'  render={(props)=> <RegisterForm/> } /> 
-                        
+                          <Route path='/ViewAttendance'  render={(props)=> <ViewAttendance/> } /> 
                           
                         </div>
                    </BrowserRouter>         
