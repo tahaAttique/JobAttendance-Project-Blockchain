@@ -6,6 +6,7 @@ import {BrowserRouter , Route} from 'react-router-dom';
 import Attendance from './components/Attendance';
 import RegisterForm from './components/RegisterForm';
 import ViewAttendance from './components/ViewAttendance';
+import ViewExitAttendance from './components/ViewExitAttendance';
 class App extends Component{
 
   constructor(props)
@@ -79,6 +80,8 @@ class App extends Component{
                           <Route path='/Attendance'  render={(props)=> <Attendance loginedAddress={this.state.loginedAddress} /> } /> 
                           <Route path='/RegisterForm'  render={(props)=> <RegisterForm/> } /> 
                           <Route path='/ViewAttendance'  render={(props)=> <ViewAttendance/> } /> 
+                          <Route path='/ViewExitAttendance'  render={(props)=> <ViewExitAttendance/> } /> 
+                          
                           
                         </div>
                    </BrowserRouter>         

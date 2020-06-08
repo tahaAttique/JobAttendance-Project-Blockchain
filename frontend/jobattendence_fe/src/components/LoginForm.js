@@ -86,6 +86,11 @@ class LoginForm extends Component{
         this.props.history.push('/RegisterForm');
         
     }
+    handelViewAttendanceClicked=(e)=>{
+        e.preventDefault();
+
+        this.props.history.push('/ViewAttendance');
+    }
 
     
     render(){
@@ -127,6 +132,11 @@ class LoginForm extends Component{
                                         </p>
                                     </div>
                                 </div>
+
+                                <p className="center-align">
+                                    <a type="submit" className="waves-effect waves-light btn-small findbtn valign-wrapper " onClick={this.handelViewAttendanceClicked}>View Attendance</a>
+                                </p>
+
                                 
                             </form>
                          </div>

@@ -4,7 +4,7 @@ import {BrowserRouter , Route, withRouter} from 'react-router-dom';
 import {Attendance_Contract_ADDRESS, Attendance_Contract_ABI} from '../config';
 import Web3 from 'web3';
 
-class ViewAttendance extends Component{
+class ViewExitAttendance extends Component{
 
 
     constructor(props)
@@ -71,10 +71,6 @@ class ViewAttendance extends Component{
         this.props.history.push('/');  
 
     }
-   
-                                                                    
-                    
-
 
     render(){
 
@@ -86,31 +82,24 @@ class ViewAttendance extends Component{
 
                                 <div>
 
-
-                                    <div className="row">
-                                        <p className="center-align">
-                                            <div className="col s4">
-                                                 <button  className="waves-effect waves-light btn-large" 
-                                                 onClick={this.handelHomeClicked}>Home</button>
-                                            </div>
-                                            <div className="col s4">
+                                        <div className="row">
+                                            <p className="center-align">
+                                                <div className="col s4">
                                                     <button  className="waves-effect waves-light btn-large" 
-                                                    onClick={this.showExteranceAttendence}>Enterance Attendance</button>
-                                            </div>
-                                            <div className="col s4">
-                                                    <button  className="waves-effect waves-light btn-large" 
-                                                        onClick={this.showExitAttendence}>Exit Attendance</button>
-                                            </div>
-                                        </p>    
+                                                    onClick={this.handelHomeClicked}>Home</button>
+                                                </div>
+                                                <div className="col s4">
+                                                        <button  className="waves-effect waves-light btn-large" 
+                                                        onClick={this.showExteranceAttendence}>Enterance Attendance</button>
+                                                </div>
+                                                <div className="col s4">
+                                                        <button  className="waves-effect waves-light btn-large" 
+                                                            onClick={this.showExitAttendence}>Exit Attendance</button>
+                                                </div>
+                                            </p>    
                                     </div>    
-                                
-
-                                <div className="row" ></div>
-
-                               
-
                                 <ul>
-                                    {this.state.enteranceAttendanceArray.map(item => (
+                                    {this.state.exitAttendanceArray.map(item => (
 
                                     <li > 
 
@@ -132,17 +121,14 @@ class ViewAttendance extends Component{
                                     ))}
                             </ul>
                             </div>
-        
-                       
-                }
+                
+                    }
 
             </div>
-           
-        )
-
-    }
-
+        );
     
+    }   
+
 }
 
-export default withRouter(ViewAttendance);
+export default withRouter(ViewExitAttendance);
